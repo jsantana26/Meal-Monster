@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Client } = require('pg');
+const User = require('../db/user');
 
 //Get all users
 router.get('/', (req, res) => {
@@ -21,25 +22,17 @@ router.get('/', (req, res) => {
 
 //Get user by id
 router.get('/:id', (req, res) => {
-  const client = new Client({
-    user: "postgres",
-    password: "jeffrey1",
-    host: "localhost",
-    port: 5432,
-    database: "MealMonsterDb"
-  });
 
-  const query = {
-    name: 'fetch-user',
-    text: 'SELECT * FROM users WHERE id = $1',
-    values: [req.params.id],
+  if (!isNaN(req.params.id)) {
+    User.getOne(req.params.id).then(user => {
+      if (user) {
+        delete user.password
+        res.json(user);
+      } else {
+        resError(res, 404, "User Not Found");
+      }
+    })
   }
-
-  client.connect()
-    .then(() => client.query(query))
-    .then(results => res.status(200).json({ success: true, user: results.rows[0] }))
-    .catch(err => res.status(503).json({ success: false, msg: `ERROR: ${err}` }))
-    .finally(() => client.end());
 });
 
 //Create user
@@ -50,4 +43,8 @@ router.get('/:id', (req, res) => {
 
 //Delete user
 
+function resError(res, statusCode, message) {
+  res.status(statusCode);
+  res.json({ message });
+}
 module.exports = router;
