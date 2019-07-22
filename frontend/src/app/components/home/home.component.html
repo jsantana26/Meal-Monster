@@ -1,0 +1,12 @@
+<div class="content">
+  <div class="landing">
+    <div class="landing-inner">
+      <h1 class="title">Search Recipes</h1>
+      <h1 class="title">Using Ingredients</h1>
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <input class="form-control" type="text" name="search" id="search" placeholder="Search" ngModel required>
+        <button class="btn btn-outline-warning">Search</button>
+      </form>
+    </div>
+  </div>
+</div>
