@@ -1,0 +1,163 @@
+/* Media query for bootstrap breakpoint LG and larger */
+@media(min-width: 993px){
+  /*Container for entire component*/
+  .container-form{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    font-family: Montserrat;
+    color: white;
+  }
+  /*This creates a diagonal split in the background*/
+  .triangle{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -100;
+    width: 100%; 
+    height: 100vh;
+    background-color: #FEA93A;
+    background-image: -webkit-linear-gradient(-20deg, #FEA93A 55%, #FF960B 45%);
+  }
+  /*Holds entire form*/
+  .form{
+    /*Need to make transparent border because entire container moves down if there is no border*/
+    border: 2px solid transparent;
+    width: 30%;
+    margin-left: 65%;
+  }
+  /*Contains the input fields and the title*/
+  .form-input{
+    margin-top: 25%;
+  }
+  /*Title of the form*/
+  .form-group h1{
+    font-size: 70px;
+    font-weight: bold;
+    padding-bottom: 15px;
+  }
+  /*Labels for inputs*/
+  .form-group label{
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+  }
+  /*Input boxes*/
+  .form-group input{
+    font-size: 20px;
+  }
+  /*All the buttons that are inside the form*/
+  .form button{
+    width: 100%;
+    padding: 10px 0px;
+    background: #0788F8;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 1px solid black;
+  }
+  /*Submit button for the form*/
+  .btn-submit{
+    margin-top: 40px;
+  }
+  /*Log in with google button*/
+  .google-login{
+    margin: 10px 0px;
+  }
+  /*Google icon*/
+  .google-login img{
+    padding: 0px 5px;
+    max-height: 25px;
+  }
+  /*Contains the label and button to create new account*/
+  .register-group{
+    margin-top: 40px;
+  }
+}
+/*Media query to adjust the width of the background split when the text gets close to the split*/
+@media(max-width: 1550px){
+  .triangle{
+    background-image: -webkit-linear-gradient(-20deg, #FEA93A 50%, #FF960B 50%);
+  }
+}
+/* Bootstrap breakpoint for md screens*/
+@media(max-width: 992px){
+  .container-form{
+    font-family: Montserrat;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #FF960B;
+    color: white;
+  }
+  .form{
+    width: 80%;
+    margin: auto;
+    padding-top: 35px;
+  }
+  .form-group h1{
+    font-size: 60px;
+    font-weight: bold;
+    padding-bottom: 15px;
+  }
+  .form-group label{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+  }
+  .form-group input{
+    font-size: 20px;
+  }
+  .form button{
+    width: 100%;
+    padding: 15px 0px;
+    background: #0788F8;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 1px solid black;
+  }
+  .btn-submit{
+    margin-top: 40px;
+  }
+  .google-login{
+    margin: 10px 0px;
+  }
+  .google-login img{
+    padding: 0px 5px;
+    max-height: 25px;
+  }
+  .register-group{
+    margin-top: 40px;
+  }
+}
+/*Bootstrap breakpoint for sm screens*/
+@media(max-width: 576px){
+  .form{
+    width: 90%;
+    padding-top: 20px;
+  }
+  .form-group h1{
+    font-size: 40px;
+  }
+  .form-group label{
+    font-size: 15px;
+  }
+  .form button{
+    padding: 10px 0px;
+    font-size: 16px;
+  }
+  .btn-submit{
+    margin-top: 30px;
+  }
+  .google-login{
+    margin: 5px 0px;
+  }
+  .register-group{
+    margin: 20px 0px;
+  }
+}

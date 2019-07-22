@@ -28,16 +28,14 @@
           routerLinkActive="router-link-active">Search</button>
       </form>
 
-      <ng-template #anonymousUser>
-        <div data-toggle="collapse" data-target="#navbarSupportedContent">
-          <a class="btn btn-warning my-2 my-sm-0" style="margin: 0px 10px" [routerLink]="['/account/login']"
-            routerLinkActive="router-link-active">Log In</a>
-        </div>
-        <div data-toggle="collapse" data-target="#navbarSupportedContent" *ngIf="route == '/'">
-          <a class="btn btn-warning my-2 my-sm-0" [routerLink]="['/account/register']"
-            routerLinkActive="router-link-active">Register</a>
-        </div>
-      </ng-template>
+      <div data-toggle="collapse" data-target="#navbarSupportedContent">
+        <a class="btn btn-warning my-2 my-sm-0" style="margin: 0px 10px" [routerLink]="['/account/login']"
+          routerLinkActive="router-link-active">Log In</a>
+      </div>
+      <div data-toggle="collapse" data-target="#navbarSupportedContent" *ngIf="route == '/'">
+        <a class="btn btn-warning my-2 my-sm-0" [routerLink]="['/account/register']"
+          routerLinkActive="router-link-active">Register</a>
+      </div>
     </ul>
   </div>
 </nav>
