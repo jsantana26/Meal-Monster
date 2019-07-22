@@ -1,0 +1,32 @@
+nav{
+  font-family: Montserrat;
+}
+
+.navbar-brand{
+  font-family: Montserrat;
+}
+
+.logo{
+  max-height: 50px;
+}
+
+.navbar-toggler{
+  margin: 0;
+}
+
+.nav-link{
+  font-size: 20px;
+}
+
+@media(max-width: 650px){
+  .navbar{
+    padding: 0.5em 0px;
+  }
+  .logo{
+    max-height: 40px;
+  }
+  .fa-caret-down {
+    color: orange;
+  }
+}
+
