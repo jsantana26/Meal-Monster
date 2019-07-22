@@ -68,7 +68,7 @@ router.post('/login', (req, res, next) => {
                 secure: true
               });
               if (result) {
-                res.json({ result, message: 'Logged In!' });
+                res.json({ success: result, message: 'Logged In!' });
               } else {
                 next(new Error('Invalid login'));
               }
