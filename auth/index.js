@@ -36,17 +36,17 @@ router.post('/signup', (req, res, next) => {
               }
               User.create(user)
                 .then(id => {
-                  res.json({ id: id, message: 'success' });
+                  res.status(201).json({ success: true, id: id, message: 'User created' });
                 });
 
             });
         } else {
           //Email is already in use
-          next(new Error('Email in use'));
+          req.status(400).json({ success: false, message: 'Email is already in use' });
         }
       });
   } else {
-    next(new Error('Invalid user'));
+    res.status(400).json({ success: false, message: 'Invalid credentials' });
   }
 });
 
