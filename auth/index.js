@@ -55,7 +55,6 @@ router.post('/login', (req, res, next) => {
     //Check db for user
     User.getOneByEmail(req.body.email)
       .then(user => {
-        console.log('user', user);
         //If user email was found in db
         if (user) {
           //Compare password
