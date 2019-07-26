@@ -51,36 +51,32 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.post('/login', (req, res, next) => {
-  if (validUser(req.body)) {
-    //Check db for user
-    User.getOneByEmail(req.body.email)
-      .then(user => {
-        //If user email was found in db
-        if (user) {
-          //Compare password
-          bcrypt.compare(req.body.password, user.password)
-            .then(result => {
-              //setting the set 'set-cookie' header
-              res.cookie('user_id', user.id, {
-                httpOnly: true,
-                //signed: true, WHEN IN PRODUCTION
-                secure: true
-              });
-              if (result) {
-                res.json({ success: result, message: 'Logged In!' });
-              } else {
-                next(new Error('Invalid login'));
-              }
+  //Check db for user
+  User.getOneByEmail(req.body.email)
+    .then(user => {
+      //If user email was found in db
+      if (user) {
+        //Compare password
+        bcrypt.compare(req.body.password, user.password)
+          .then(result => {
+            //setting the set 'set-cookie' header
+            res.cookie('user_id', user.id, {
+              httpOnly: true,
+              //signed: true, WHEN IN PRODUCTION
+              secure: true
+            });
+            if (result) {
+              res.json({ success: result, message: 'Logged In!' });
+            } else {
+              res.status(404).json({ success: result, message: 'Invalid Credentials' });
+            }
 
-            })
+          })
 
-        } else {
-          next(new Error('Invalid login'));
-        }
-      });
-  } else {
-    next(new Error('Invalid login'));
-  }
+      } else {
+        res.json({ success: false, message: 'Invalid Credentials' });
+      }
+    });
 });
 
 module.exports = router;
