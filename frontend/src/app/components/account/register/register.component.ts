@@ -18,9 +18,17 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    this.userModel = new User(form.value.email, form.value.fullName, form.value.username);
-    const password = form.value.password;
+    const user = {
+      name: form.value.name,
+      username: form.value.username,
+      email: form.value.email,
+      password: form.value.password
+    };
 
-    this.auth.registerUser(this.userModel, password);
+    // Register User
+    this.auth.registerUser(user).subscribe(data => {
+      console.log(data);
+    });
+
   }
 }
