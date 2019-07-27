@@ -16,7 +16,8 @@ export class AuthService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-      })
+      }),
+      withCredentials: true
     };
     return this.http.post<LoginResponse>('http://localhost:3000/auth/login', user, httpOptions).pipe(
       map(res => res)

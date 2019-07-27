@@ -62,8 +62,8 @@ router.post('/login', (req, res, next) => {
             //setting the set 'set-cookie' header
             res.cookie('user_id', user.id, {
               httpOnly: true,
-              //signed: true, WHEN IN PRODUCTION
-              secure: true
+              signed: true,
+              secure: false
             });
             if (result) {
               res.json({ success: result, message: 'Logged In!' });

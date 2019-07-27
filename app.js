@@ -8,9 +8,12 @@ const app = express();
 const port = 3000;
 
 //Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:4200',
+  credentials: true
+}));
 app.use(bodyParser.json());
-app.use(cookieParser(process.env.COOKIE_SECRET));
+app.use(cookieParser('cattle_cover'));
 
 //Import Routes
 const users = require('./routes/users');
