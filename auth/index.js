@@ -36,17 +36,17 @@ router.post('/signup', (req, res, next) => {
               }
               User.create(user)
                 .then(id => {
-                  res.status(201).json({ success: true, id: id, message: 'User created' });
+                  res.json({ success: true, id: id, message: 'User created' });
                 });
 
             });
         } else {
           //Email is already in use
-          req.status(400).json({ success: false, message: 'Email is already in use' });
+          req.json({ success: false, message: 'Email is already in use' });
         }
       });
   } else {
-    res.status(400).json({ success: false, message: 'Invalid credentials' });
+    res.json({ success: false, message: 'Invalid credentials' });
   }
 });
 
@@ -68,7 +68,7 @@ router.post('/login', (req, res, next) => {
             if (result) {
               res.json({ success: result, message: 'Logged In!' });
             } else {
-              res.status(404).json({ success: result, message: 'Invalid Credentials' });
+              res.json({ success: result, message: 'Invalid Credentials' });
             }
 
           })
