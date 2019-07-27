@@ -24,14 +24,13 @@ export class AuthService {
     )
   }
 
-  registerUser(user, password) {
+  registerUser(user) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-      }),
-      withCredentials: true
+      })
     };
-    return this.http.post('http://localhost:3000/auth/register', user, httpOptions)
+    return this.http.post<LoginResponse>('http://localhost:3000/auth/register', user, httpOptions)
       .pipe(
         map(res => res)
       )
