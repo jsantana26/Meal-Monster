@@ -23,6 +23,19 @@ export class AuthService {
       map(res => res)
     )
   }
+
+  registerUser(user, password) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      withCredentials: true
+    };
+    return this.http.post('http://localhost:3000/auth/register', user, httpOptions)
+      .pipe(
+        map(res => res)
+      )
+  }
 }
 
 interface LoginResponse {

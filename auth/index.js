@@ -17,7 +17,7 @@ function validUser(user) {
   return validEmail && validPassword;
 }
 
-router.post('/signup', (req, res, next) => {
+router.post('/register', (req, res, next) => {
   //Make sure username and password are valid
   if (validUser(req.body)) {
     //Check if email is already in use
@@ -42,7 +42,7 @@ router.post('/signup', (req, res, next) => {
             });
         } else {
           //Email is already in use
-          req.json({ success: false, message: 'Email is already in use' });
+          res.json({ success: false, message: 'Email is already in use' });
         }
       });
   } else {
