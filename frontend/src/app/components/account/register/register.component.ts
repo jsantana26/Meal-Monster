@@ -1,6 +1,6 @@
 import { AuthService } from '../../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -8,26 +8,34 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
-  userModel;
-
-  constructor(private auth: AuthService) { }
+  constructor(public service: UserService) { }
 
   ngOnInit() {
+    this.service.formModel.reset();
   }
 
-  onSubmit(form: NgForm) {
-    const user = {
-      name: form.value.name,
-      username: form.value.username,
-      email: form.value.email,
-      password: form.value.password
-    };
+  onSubmit(){
+    this.service.register().subscribe(
+      (res:any) => {
+        if(res.succeeded){
+          this.service.formModel.reset();
+        } else {
+          res.errors.forEach(element => {
+            switch(element.code){
+              case 'DupicateUserName':
 
-    // Register User
-    this.auth.registerUser(user).subscribe(data => {
-      console.log(data);
-    });
+                break;
+              
+              default:
 
+                break;
+            }
+          });
+        }
+      },
+      err => {
+        console.log(err);
+      }
+    )
   }
 }

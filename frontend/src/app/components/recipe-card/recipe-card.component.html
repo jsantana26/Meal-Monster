@@ -1,0 +1,10 @@
+<a class="card" [routerLink]="['/recipe', key]" routerLinkActive="router-link-active">
+  <div class="boxed" [ngClass]="color">
+    <img [src]="imgSrc">
+  </div>
+  <h2>{{name}}</h2>
+  <p>Prep: {{prepTime}} Minutes - Cook: {{cookTime}} Minutes</p>
+  <!-- <p *ngIf="cookTime == 1">Prep: {{prepTime}} Minutes - Cook: {{cookTime}} Minute</p>
+  <p *ngIf="prep == 1 && cookTime == 1">Prep: {{prepTime}} Minute - Cook: {{cookTime}} Minute</p>
+  <p *ngIf="cookTime != 1">Prep: {{prepTime}} Minutes - Cook: {{cookTime}} Minutes</p> -->
+</a>

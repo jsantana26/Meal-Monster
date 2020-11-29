@@ -1,0 +1,19 @@
+<div>
+  <label>Name: </label>
+  <input type="text" id="recipeName">
+</div>
+<div>
+  <label>Prep Time: </label>
+  <input type="number" id="prepTime"> Minutes
+</div>
+<div>
+  <label>Cook Time: </label>
+  <input type="number" id="cookTime"> Minutes
+</div>
+<div>
+  <label>Image: </label>
+  <input type="file" (change)="imageSelected($event)">
+</div>
+<div>
+  <button type="submit" (click)="addRecipe()" class="btn btn-primary">Add</button>
+</div>

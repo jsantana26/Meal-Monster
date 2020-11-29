@@ -1,0 +1,38 @@
+<div class="wrapper" *ngIf="recipe$ | async as recipe">
+  <div class="image">
+    <img src="{{ recipe.images[0]}}" />
+  </div>
+  <div class="title">
+    <h1>{{ recipe.name }}</h1>
+    <h4>by {{recipe.author}}</h4>
+    <div class="time">
+      <p>Prep Time: {{recipe.prepTime.time}} Minutes</p>
+      <p>Cook Time: {{recipe.cookTime.time}} Minutes</p>
+    </div>
+  </div>
+  <div class="details">
+    <div class="ingredients">
+      <h1>Ingredients</h1>
+      <ul>
+        <ng-container *ngFor="let ingredient of recipe.ingredients; let i=index">
+          <li *ngIf="ingredient.quantity != 1">
+            {{ ingredient.quantity }} {{ ingredient.unit }}s - {{ ingredient.name }}
+          </li>
+          <li *ngIf="ingredient.quantity == 1">
+            {{ ingredient.quantity }} {{ ingredient.unit }} - {{ ingredient.name }}
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+    <div class="preparation">
+      <h1>Preparation</h1>
+      <ol>
+        <ng-container *ngFor="let step of recipe.preparation; let i=index">
+          <li>
+            {{ step }}
+          </li>
+        </ng-container>
+      </ol>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="content">
+  <a class="btn btn-warning" [routerLink]="['/recipes/new']" routerLinkActive="router-link-active">New Recipe</a>
+  <div class="featured">
+    <app-featured-card></app-featured-card>
+  </div>
+  <div class="recently-added">
+    <h3>RECENTLY ADDED RECIPES</h3>
+    <!--<div class="recipes">
+      <div class="recipe-card" *ngFor="let recipe of recipes$ | async | reverse">
+        <app-recipe-card name="{{recipe.name}}" prepTime="{{ recipe.prepTime.time}}"
+          cookTime="{{ recipe.cookTime.time }}" imgSrc="{{ recipe.images[0]}}" key="{{ recipe.key }}">
+        </app-recipe-card>
+      </div>
+    </div>-->
+  </div>
+</div>
