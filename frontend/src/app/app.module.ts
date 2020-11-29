@@ -7,8 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messages';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
-import {ToastrModule } from 'ngx-toastr'
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -52,8 +50,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FlashMessagesModule,
     RouterModule.forRoot(appRoutes),
-    BrowserAnimationsModule,
-    ToastrModule
+    BrowserAnimationsModule
   ],
   providers: [AuthService, FlashMessagesService, UserService, RecipeService],
   bootstrap: [AppComponent]
