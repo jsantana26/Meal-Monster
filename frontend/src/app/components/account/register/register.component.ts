@@ -1,6 +1,6 @@
-import { AuthService } from '../../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-register',
@@ -8,7 +8,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  constructor(public service: UserService) { }
+  constructor(public service: UserService, private flashMessage: FlashMessagesService) { }
 
   ngOnInit() {
     this.service.formModel.reset();
@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit {
       (res:any) => {
         if(res.succeeded){
           this.service.formModel.reset();
+          this.flashMessage.show('User Account Registered', {cssClass: 'alert-success', timeout: 3000});
         } else {
           res.errors.forEach(element => {
             switch(element.code){
