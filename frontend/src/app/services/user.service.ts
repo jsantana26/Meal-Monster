@@ -8,6 +8,8 @@ import { HttpClient } from "@angular/common/http";
 export class UserService {
   readonly BaseURI = 'http://localhost:63631/api'
 
+  authToken: any;
+
   constructor(private fb: FormBuilder, private http:HttpClient) {
    }
 
@@ -40,5 +42,13 @@ export class UserService {
       Password: this.formModel.value.Passwords.Password
     };
     return this.http.post(this.BaseURI+'/ApplicationUser/Register', body);
+  }
+
+  login(formData){
+    return this.http.post(this.BaseURI+'/ApplicationUser/Login', formData);
+  }
+
+  logout(){
+
   }
 }
